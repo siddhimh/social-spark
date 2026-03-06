@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  /* Warm cream palette inspired by JoinHive */
+  --color-cream: #f7f4ef;
+  --color-cream-dark: #eeeae3;
+  --color-warm-white: #fdfcfa;
+  --color-warm-card: #ffffff;
+  --color-warm-border: #e5e0d8;
+  --color-warm-border-dark: #d4cec4;
+  --color-warm-muted: #a09888;
+  --color-warm-text: #1a1a1a;
+  --color-warm-text-secondary: #5a5347;
+  --color-warm-text-dim: #8a8279;
+
+  /* Accent — golden honey */
+  --color-honey: #d4a843;
+  --color-honey-light: #f5e6b8;
+  --color-honey-bg: #faf3e0;
+  --color-honey-dark: #b8922e;
+
+  /* Status */
+  --color-score-green: #3d8b5e;
+  --color-score-green-bg: #e8f5ed;
+  --color-score-yellow: #a68b2d;
+  --color-score-yellow-bg: #faf3e0;
+  --color-score-red: #c45c5c;
+  --color-score-red-bg: #fce8e8;
+
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+  --font-display: "Georgia", "Times New Roman", serif;
+
+  --animate-fade-in: fade-in 0.5s ease-out both;
+  --animate-fade-up: fade-up 0.6s ease-out both;
+  --animate-pulse-soft: pulse-soft 2.5s ease-in-out infinite;
+  --animate-dot-bounce: dot-bounce 1.4s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+  @keyframes dot-bounce {
+    0%, 80%, 100% { transform: scale(0.6); opacity: 0.3; }
+    40% { transform: scale(1); opacity: 1; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+  }
+}
+
+@layer base {
+  body {
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    background: #f7f4ef;
+    color: #1a1a1a;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #f7f4ef; }
+  ::-webkit-scrollbar-thumb { background: #d4cec4; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #a09888; }
+
+  ::selection {
+    background: rgba(212, 168, 67, 0.2);
+  }
+}
+
+/* Subtle grid pattern overlay */
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Warm inner shadow for cards */
+.card-inset {
+  box-shadow:
+    0 1px 3px rgba(0,0,0,0.04),
+    0 0 0 1px rgba(0,0,0,0.03);
+}
+
+.card-elevated {
+  box-shadow:
+    0 4px 24px rgba(0,0,0,0.04),
+    0 1px 4px rgba(0,0,0,0.03);
+}
