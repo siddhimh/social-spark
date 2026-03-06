@@ -176,7 +176,7 @@ async function fetchVideoData(videoId: string): Promise<VideoData> {
 async function fetchChannelData(identifier: string, isHandle: boolean): Promise<ChannelData> {
   const param = isHandle ? `forHandle=${identifier}` : `id=${identifier}`;
   const chRes = await fetch(
-    `https://corsproxy.io/?https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&forHandle=${handle}&key=${YOUTUBE_API_KEY}`
+    `https://corsproxy.io/?https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&forHandle=${param}&key=${YOUTUBE_API_KEY}`
   );
   if (!chRes.ok) throw new Error(`YouTube API error (${chRes.status})`);
   const chData = await chRes.json();
@@ -193,7 +193,7 @@ async function fetchChannelData(identifier: string, isHandle: boolean): Promise<
   if (!videoIds) return { name: ch.snippet.title, subscriberCount: Number(ch.statistics.subscriberCount || 0), videos: [] };
 
   const vidRes = await fetch(
-    `https://corsproxy.io/?https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${videoId}&key=${YOUTUBE_API_KEY}`
+    `https://corsproxy.io/?https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${videoIds}&key=${YOUTUBE_API_KEY}`
   );
   if (!vidRes.ok) throw new Error(`YouTube Videos API error (${vidRes.status})`);
   const vidData = await vidRes.json();
